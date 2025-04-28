@@ -14,7 +14,7 @@ export default function Home() {
                         <p className="text-lg text-gray-600 mb-6">Streamline your development workflow with powerful project tracking and collaboration tools</p>
                         <div className="flex flex-wrap gap-4">
                             <a href="/signup" className="bg-blue-600 text-white font-semibold px-5 py-3 rounded-md transition-colors hover:bg-blue-700">
-                                Get Started - It's Free
+                                Get Started - It`s Free
                             </a>
                             <a href="#" className="bg-gray-200 text-gray-800 font-semibold px-5 py-3 rounded-md transition-colors hover:bg-gray-300">
                                 Continue with GitHub
