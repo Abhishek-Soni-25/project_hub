@@ -1,4 +1,43 @@
+"use client"
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+
+
 export default function Login() {
+
+    const router = useRouter();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault(); // Prevent default form reload
+
+        try {
+            // const res = await fetch("/api/auth/signup", {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify({ fullName, email, password }),
+            // });
+
+            // const data = await res.json();
+
+            if (true) {
+                // alert(fullName +  email + password);
+                // Optionally redirect to login page
+                router.push('/dashboard');
+            } else {
+                alert(`Login failed`);
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+            alert("Something went wrong. Please try again.");
+        }
+    };
+
     return (
         <>
             <div className="flex min-h-screen bg-gray-900">
@@ -13,40 +52,44 @@ export default function Login() {
                         <h1 className="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h1>
                         <p className="text-sm text-gray-500 mb-6">Log in to your account</p>
 
-                        <div className="mb-6">
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-600 mb-2">
-                                Email
-                            </label>
-                            <div className="relative">
-                                <input
-                                    type="email"
-                                    id="email"
-                                    placeholder="Enter your email"
-                                    className="w-full px-3 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                />
+                        <form onSubmit={handleSubmit}>
+                            <div className="mb-6">
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-600 mb-2">
+                                    Email
+                                </label>
+                                <div className="relative">
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        placeholder="Enter your email"
+                                        className="w-full px-3 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="mb-4">
-                            <label htmlFor="password" className="block text-sm font-medium text-gray-600 mb-2">
-                                Password
-                            </label>
-                            <div className="relative">
-                                <input
-                                    type="password"
-                                    id="password"
-                                    placeholder="Enter your password"
-                                    className="w-full px-3 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                />
+                            <div className="mb-4">
+                                <label htmlFor="password" className="block text-sm font-medium text-gray-600 mb-2">
+                                    Password
+                                </label>
+                                <div className="relative">
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        placeholder="Enter your password"
+                                        className="w-full px-3 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+                                <a href="#" className="block text-right text-xs text-blue-600 hover:text-blue-500 mt-2">
+                                    Forgot Password?
+                                </a>
                             </div>
-                            <a href="#" className="block text-right text-xs text-blue-600 hover:text-blue-500 mt-2">
-                                Forgot Password?
-                            </a>
-                        </div>
 
-                        <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-medium text-sm transition-colors mt-4 mb-6">
-                            Log In
-                        </button>
+                            <button 
+                                type='submit'
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-medium text-sm transition-colors mt-4 mb-6">
+                                Log In
+                            </button>
+                        </form>
 
                         <div className="relative flex items-center mb-6">
                             <div className="flex-grow border-t border-gray-300"></div>
