@@ -2,8 +2,11 @@
 
 import { Search } from 'lucide-react'
 import { useState } from 'react';
+import { useSession } from "next-auth/react"
 
 export default function Hsearch() {
+
+    const { data: session } = useSession()
 
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -31,7 +34,7 @@ export default function Hsearch() {
                     </div>
                 </div>
 
-                <div className="w-9 h-9 rounded-full bg-white"></div>
+                <div className="font-bold text-lg">{ session?.user?.name }</div>
             </header>
         </>
     );

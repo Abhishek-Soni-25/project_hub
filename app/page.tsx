@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import Header from "./_components/header";
 import Footer from "./_components/footer";
+import GitHubButton from "./_components/githubButton";
 
 export default function Home() {
   return (
@@ -18,9 +19,7 @@ export default function Home() {
                                 <a href="/signup" className="bg-blue-600 text-white font-semibold px-5 py-3 rounded-md transition-colors hover:bg-blue-700">
                                     Get Started - It`s Free
                                 </a>
-                                <a href="#" className="bg-gray-200 text-gray-800 font-semibold px-5 py-3 rounded-md transition-colors hover:bg-gray-300">
-                                    Continue with GitHub
-                                </a>
+                                <GitHubButton text="Continue with Github"/>
                             </div>
                         </div>
                         <div className="hidden md:block">
