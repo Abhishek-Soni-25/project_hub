@@ -24,7 +24,10 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="hidden md:block">
-                            <Image src="/laptop.png" alt="Project Dashboard" className="max-w-md rounded-lg" />
+                            <Image 
+                            width={500}
+                            height={500}
+                            src="/laptop.png" alt="Project Dashboard" className="max-w-md rounded-lg" />
                         </div>
                     </div>
                 </header>

@@ -60,7 +60,10 @@ export default function Settings() {
 
                         <div className="flex items-center mb-6">
                             <div className="w-24 h-24 rounded-full border border-slate-200 overflow-hidden mr-6 bg-slate-100">
-                                <Image src="/api/placeholder/100/100" alt="Profile" className="w-full h-full object-cover" />
+                                <Image 
+                                width={500}
+                                height={500}
+                                src="/api/placeholder/100/100" alt="Profile" className="w-full h-full object-cover" />
                             </div>
                             <button className="inline-flex items-center justify-center px-4 py-2 bg-blue-700 text-white rounded-md text-sm font-medium hover:bg-blue-800 transition-colors">
                                 <Upload className="w-5 h-5 mr-2" />
