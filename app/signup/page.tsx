@@ -31,7 +31,7 @@ export default function Signup() {
 
             const hashedPassword = bcrypt.hashSync(password, 10)
 
-            const { data, error } = await supabase
+            const { error } = await supabase
             .from('users')
             .insert([{ fullName, email, password: hashedPassword }]);
 
