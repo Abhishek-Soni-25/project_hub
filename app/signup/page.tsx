@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { supabase } from "@/app/lib/supabaseClient"
+import bcrypt from 'bcryptjs'
 
 import GitHubButton from '../_components/githubButton';
 
@@ -27,16 +29,19 @@ export default function Signup() {
                 return alert("Please enter a valid email")
             }
 
-            router.push('/dashboard');
-            // const res = await fetch("/api/auth/signup", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({ fullName, email, password }),
-            // });
+            const hashedPassword = bcrypt.hashSync(password, 10)
 
-            // const data = await res.json();
+            const { data, error } = await supabase
+            .from('users')
+            .insert([{ fullName, email, password: hashedPassword }]);
+
+            if (error) {
+                console.error('Signup error:', error.message)
+                alert(error.message)
+            } else {
+                alert('Check your email to confirm your account.')
+                router.push('/dashboard')
+            }
 
         } catch (error) {
             console.error("Signup error:", error);
