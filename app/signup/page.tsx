@@ -17,6 +17,17 @@ export default function Signup() {
         e.preventDefault(); // Prevent default form reload
 
         try {
+            if (!fullName || !email || !password) {
+                return alert("Please enter all details")
+            }
+
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailIsValid = pattern.test(email)
+            if (!emailIsValid) {
+                return alert("Please enter a valid email")
+            }
+
+            router.push('/dashboard');
             // const res = await fetch("/api/auth/signup", {
             //     method: "POST",
             //     headers: {
@@ -27,13 +38,6 @@ export default function Signup() {
 
             // const data = await res.json();
 
-            if (true) {
-                // alert(fullName +  email + password);
-                // Optionally redirect to login page
-                router.push('/dashboard');
-            } else {
-                alert(`Signup failed`);
-            }
         } catch (error) {
             console.error("Signup error:", error);
             alert("Something went wrong. Please try again.");
@@ -91,6 +95,8 @@ export default function Signup() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Create a password"
+                                    pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
+                                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                                     className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 />
                             </div>
