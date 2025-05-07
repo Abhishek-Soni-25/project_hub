@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { supabase } from '@/app/lib/supabaseClient';
+import bcrypt from 'bcryptjs';
 
 import GitHubButton from '../_components/githubButton';
 
@@ -16,23 +18,37 @@ export default function Login() {
         e.preventDefault(); // Prevent default form reload
 
         try {
-            // const res = await fetch("/api/auth/signup", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({ fullName, email, password }),
-            // });
-
-            // const data = await res.json();
-
-            if (true) {
-                // alert(fullName +  email + password);
-                // Optionally redirect to login page
-                router.push('/dashboard');
-            } else {
-                alert(`Login failed`);
+            
+            // Validating
+            if (!email || !password) {
+                return alert("Please enter all details")
             }
+
+            const { data, error } = await supabase
+            .from("users")
+            .select('email, password')
+            .eq('email', email)
+
+            if(!data || data.length === 0){
+                return alert("User not found")
+            }
+
+            const passwordIsCorrect = await bcrypt.compare(password, data[0].password)
+
+            if(!passwordIsCorrect){
+                return alert("Password is wrong")
+            }
+
+            // Error handling
+            if (error) {
+                console.error('Signup error:', error)
+                alert(error)
+            } else {
+
+                // Rerouting
+                router.push('/dashboard')
+            }
+
         } catch (error) {
             console.error("Login error:", error);
             alert("Something went wrong. Please try again.");
@@ -89,7 +105,7 @@ export default function Login() {
                                 </a>
                             </div>
 
-                            <button 
+                            <button
                                 type='submit'
                                 className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-medium text-sm transition-colors mt-4 mb-6">
                                 Log In
