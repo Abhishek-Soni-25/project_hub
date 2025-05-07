@@ -37,7 +37,7 @@ export default function Signup() {
             .select('email')
             .eq('email', email)
 
-            if(data){
+            if(data && data.length > 0){
                 return alert("Email already registered")
             }
 
