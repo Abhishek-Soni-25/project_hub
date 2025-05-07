@@ -19,6 +19,8 @@ export default function Signup() {
         e.preventDefault(); // Prevent default form reload
 
         try {
+
+            // Validation
             if (!fullName || !email || !password) {
                 return alert("Please enter all details")
             }
@@ -29,17 +31,30 @@ export default function Signup() {
                 return alert("Please enter a valid email")
             }
 
+            // Checking if user already exists
+            const { data } = await supabase
+            .from("users")
+            .select('email')
+            .eq('email', email)
+
+            if(data){
+                return alert("Email already registered")
+            }
+
             const hashedPassword = bcrypt.hashSync(password, 10)
 
+            // Inserting data
             const { error } = await supabase
             .from('users')
             .insert([{ fullName, email, password: hashedPassword }]);
 
+            // Error handling
             if (error) {
                 console.error('Signup error:', error.message)
                 alert(error.message)
             } else {
-                alert('Check your email to confirm your account.')
+                
+                // Rerouting
                 router.push('/dashboard')
             }
 
