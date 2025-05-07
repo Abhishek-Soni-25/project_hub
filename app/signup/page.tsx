@@ -2,14 +2,17 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { supabase } from "@/app/lib/supabaseClient"
 import bcrypt from 'bcryptjs'
 
+import { supabase } from "@/app/lib/supabaseClient"
 import GitHubButton from '../_components/githubButton';
+import { useUser } from '../_context/UserContext'
 
 export default function Signup() {
 
     const router = useRouter();
+
+    const { setUser } = useUser()
 
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
@@ -53,7 +56,7 @@ export default function Signup() {
                 console.error('Signup error:', error.message)
                 alert(error.message)
             } else {
-                
+                setUser({ fullName, email })
                 // Rerouting
                 router.push('/dashboard')
             }

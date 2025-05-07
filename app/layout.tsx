@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Geist, Geist_Mono } from "next/font/google";
 import { SessionProvider } from "next-auth/react"
+import { UserProvider } from "./_context/UserContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -38,9 +39,11 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SessionProvider>
-          {children}
-        </SessionProvider>
+        <UserProvider>
+          <SessionProvider>
+            {children}
+          </SessionProvider>
+        </UserProvider>
       </body>
     </html>
   );

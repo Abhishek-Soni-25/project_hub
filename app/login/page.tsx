@@ -2,14 +2,17 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { supabase } from '@/app/lib/supabaseClient';
 import bcrypt from 'bcryptjs';
 
+import { supabase } from '@/app/lib/supabaseClient';
 import GitHubButton from '../_components/githubButton';
+import { useUser } from '../_context/UserContext';
 
 export default function Login() {
 
     const router = useRouter();
+
+    const { setUser } = useUser()
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -26,13 +29,14 @@ export default function Login() {
 
             const { data, error } = await supabase
             .from("users")
-            .select('email, password')
+            .select('fullName, email, password')
             .eq('email', email)
 
             if(!data || data.length === 0){
                 return alert("User not found")
             }
 
+            const fullname = data[0].fullName
             const passwordIsCorrect = await bcrypt.compare(password, data[0].password)
 
             if(!passwordIsCorrect){
@@ -44,7 +48,7 @@ export default function Login() {
                 console.error('Signup error:', error)
                 alert(error)
             } else {
-
+                setUser({ fullName: fullname, email })
                 // Rerouting
                 router.push('/dashboard')
             }
