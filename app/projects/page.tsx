@@ -49,7 +49,7 @@ export default function Projects() {
                                 </Link>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                                {/* E-commerce Platform */}
+                                
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="font-semibold text-slate-800">E-commerce Platform</h3>
@@ -67,7 +67,7 @@ export default function Projects() {
                                     </div>
                                 </div>
 
-                                {/* Mobile App Backend */}
+                                
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="font-semibold text-slate-800">Mobile App Backend</h3>
@@ -84,7 +84,7 @@ export default function Projects() {
                                     </div>
                                 </div>
 
-                                {/* Analytics Dashboard */}
+                                
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="font-semibold text-slate-800">Analytics Dashboard</h3>
