@@ -1,6 +1,6 @@
 'use client'
 
-import { Search, Menu, X } from 'lucide-react'
+import { Search, X } from 'lucide-react'
 import { useState, useEffect } from 'react';
 import { useSession } from "next-auth/react"
 

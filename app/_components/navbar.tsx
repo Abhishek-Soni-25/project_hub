@@ -27,7 +27,7 @@ export default function Navbar() {
             // Close menu when resizing to desktop
             if (!isMobile) setIsMenuOpen(false);
         };
-    }, []);
+    }, [isMobile]);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
