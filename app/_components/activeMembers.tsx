@@ -32,7 +32,7 @@ export default function ActiveMembers() {
 
     return (
         <>
-            <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200 mt-6">
+            <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200 mt-6 w-80">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">Active Members</h3>
                 <div className="space-y-3">
                     {members.map((member, index) => (
