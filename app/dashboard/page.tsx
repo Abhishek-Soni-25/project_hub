@@ -38,7 +38,7 @@ export default function Dashboard() {
                         <h2 className="text-xl md:text-2xl font-semibold text-slate-800 mb-4 md:mb-6">Dashboard</h2>
 
                         {/* Metrics Grid - 1 column on mobile, 2 on md, 4 on lg */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
                             {/* Total Projects */}
                             <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                 <div className="text-gray-500 text-sm flex items-center mb-2">
@@ -152,8 +152,8 @@ export default function Dashboard() {
 
                         {/* Mobile View: Recent Activity & Active Members */}
                         {isMobile && (
-                            <div className="mt-6">
-                                <div className="mb-6">
+                            <div className="hidden mt-6">
+                                <div className="hidden mb-6">
                                     <RecentActivity />
                                 </div>
                                 <div>

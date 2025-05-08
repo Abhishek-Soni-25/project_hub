@@ -70,7 +70,7 @@ export default function Hsearch() {
                             <Search className="h-5 w-5 text-gray-300" />
                         </button>
                     )}
-                    <div className="font-bold text-xl truncate md:max-w-none">
+                    <div className="font-bold text-base truncate md:max-w-none">
                         {userName}
                     </div>
                 </div>
