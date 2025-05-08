@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import Header from "./_components/header";
 import Footer from "./_components/footer";
@@ -17,9 +18,9 @@ export default function Home() {
               <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Track Your Projects with Precision</h1>
               <p className="text-lg text-gray-600 mb-6">Streamline your development workflow with powerful project tracking and collaboration tools</p>
               <div className="flex flex-wrap gap-4">
-                <a href="/signup" className="bg-blue-600 text-white font-semibold px-5 py-3 rounded-md transition-colors hover:bg-blue-700 w-full sm:w-auto text-center">
+                <Link href="/signup" className="bg-blue-600 text-white font-semibold px-5 py-3 rounded-md transition-colors hover:bg-blue-700 w-full sm:w-auto text-center">
                   Get Started - It's Free
-                </a>
+                </Link>
                 <div className="w-full sm:w-auto">
                   <GitHubButton text="Continue with Github"/>
                 </div>

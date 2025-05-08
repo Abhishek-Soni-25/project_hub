@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
 // import { auth , signIn} from "../auth";
 
 import GitHubButton from "./githubButton";
@@ -52,14 +53,14 @@ export default function Header() {
                         <div className="hidden md:flex items-center">
                             <ul className="flex space-x-4 items-center">
                                 <li>
-                                    <a href="/signup" className="text-white hover:text-gray-300 font-semibold px-4 py-2 transition-colors">
+                                    <Link href="/signup" className="text-white hover:text-gray-300 font-semibold px-4 py-2 transition-colors">
                                         Signup
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="/login" className="text-white hover:text-gray-300 font-semibold px-4 py-2 transition-colors">
+                                    <Link href="/login" className="text-white hover:text-gray-300 font-semibold px-4 py-2 transition-colors">
                                         Login
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
                                     <GitHubButton text="Github"/>
@@ -72,18 +73,18 @@ export default function Header() {
                     {isMenuOpen && (
                         <div className="md:hidden">
                             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-                                <a 
+                                <Link 
                                     href="/signup"
                                     className="block text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium"
                                 >
                                     Signup
-                                </a>
-                                <a 
+                                </Link>
+                                <Link 
                                     href="/login"
                                     className="block text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium"
                                 >
                                     Login
-                                </a>
+                                </Link>
                                 <div className="px-3 py-2">
                                     <GitHubButton text="Github"/>
                                 </div>

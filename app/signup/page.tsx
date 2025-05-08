@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import bcrypt from 'bcryptjs'
+import Link from 'next/link'
 
 import { supabase } from "@/app/lib/supabaseClient"
 import GitHubButton from '../_components/githubButton';
@@ -142,9 +143,9 @@ export default function Signup() {
 
                         <p className="text-center text-sm text-gray-500 pt-4 md:pt-5">
                             Already have an account?{" "}
-                            <a href="/login" className="text-blue-600 font-medium hover:text-blue-500">
+                            <Link href="/login" className="text-blue-600 font-medium hover:text-blue-500">
                                 Login
-                            </a>
+                            </Link>
                         </p>
                     </div>
                 </div>

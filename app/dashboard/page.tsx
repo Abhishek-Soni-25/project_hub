@@ -35,7 +35,7 @@ export default function Dashboard() {
                 {/* Main content area - takes full width on mobile */}
                 <div className="flex-grow md:mr-6 w-full">
                     <div className="mb-6">
-                        <h2 className="text-xl md:text-2xl font-semibold text-slate-800 mb-4 md:mb-6">Dashboard</h2>
+                        <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-4 md:mb-6">Dashboard</h2>
 
                         {/* Metrics Grid - 1 column on mobile, 2 on md, 4 on lg */}
                         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
@@ -94,7 +94,7 @@ export default function Dashboard() {
 
                         {/* Recent Projects */}
                         <div>
-                            <h2 className="text-xl md:text-2xl font-semibold text-slate-800 mb-3 md:mb-4">Recent Projects</h2>
+                            <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4">Recent Projects</h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                                 {/* E-commerce Platform */}
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">

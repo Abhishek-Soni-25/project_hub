@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import bcrypt from 'bcryptjs';
+import Link from 'next/link';
 
 import { supabase } from '@/app/lib/supabaseClient';
 import GitHubButton from '../_components/githubButton';
@@ -104,9 +105,9 @@ export default function Login() {
                                         className="w-full px-3 py-2 md:py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                     />
                                 </div>
-                                <a href="#" className="block text-right text-xs text-blue-600 hover:text-blue-500 mt-2">
+                                <Link href="#" className="block text-right text-xs text-blue-600 hover:text-blue-500 mt-2">
                                     Forgot Password?
-                                </a>
+                                </Link>
                             </div>
 
                             <button
@@ -126,9 +127,9 @@ export default function Login() {
 
                         <p className="text-center text-sm text-gray-500 pt-4 md:pt-5">
                             Don`t have an account?{" "}
-                            <a href="/signup" className="text-blue-600 font-medium hover:text-blue-500">
+                            <Link href="/signup" className="text-blue-600 font-medium hover:text-blue-500">
                                 Sign up
-                            </a>
+                            </Link>
                         </p>
                     </div>
                 </div>
