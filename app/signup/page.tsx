@@ -69,18 +69,19 @@ export default function Signup() {
 
     return (
         <>
-            <div className="flex min-h-screen bg-gray-900">
-                <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: "url('/collabration.png')" }}>
+            <div className="justify-center flex flex-col md:flex-row min-h-screen">
+                {/* Image section - hidden on mobile, visible on medium screens and up */}
+                <div className="hidden md:block md:flex-1 bg-cover bg-center" style={{ backgroundImage: "url('/collabration.png')" }}>
                 </div>
 
-
-                <div className="md:w-1/3 lg:w-2/5 xl:w-1/3 bg-white p-8 flex items-center justify-center">
-                    <div className="w-full max-w-md">
-                        <h1 className="text-3xl font-bold text-gray-800 mb-2">Create Account</h1>
+                {/* Form section - full width on mobile, partial width on larger screens */}
+                <div className="w-full md:w-1/2 lg:w-2/5 xl:w-1/3 bg-white p-4 md:p-8 flex items-center justify-center">
+                    <div className="w-full max-w-md mx-auto">
+                        <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Create Account</h1>
                         <p className="text-sm text-gray-500 mb-6">Get started with your free account</p>
 
                         <form onSubmit={handleSubmit}>
-                            <div className="mb-6">
+                            <div className="mb-4 md:mb-6">
                                 <label htmlFor="fullName" className="block text-sm font-medium text-gray-600 mb-2">
                                     Full Name
                                 </label>
@@ -94,7 +95,7 @@ export default function Signup() {
                                 />
                             </div>
 
-                            <div className="mb-6">
+                            <div className="mb-4 md:mb-6">
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-600 mb-2">
                                     Email
                                 </label>
@@ -108,7 +109,7 @@ export default function Signup() {
                                 />
                             </div>
 
-                            <div className="mb-6">
+                            <div className="mb-4 md:mb-6">
                                 <label htmlFor="password" className="block text-sm font-medium text-gray-600 mb-2">
                                     Password
                                 </label>
@@ -126,7 +127,7 @@ export default function Signup() {
 
                             <button
                                 type='submit'
-                                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-medium transition-colors mb-6">
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 md:py-3 rounded-md font-medium transition-colors mb-6">
                                 Create Account
                             </button>
                         </form>
@@ -139,7 +140,7 @@ export default function Signup() {
 
                         <GitHubButton text="Github" />
 
-                        <p className="text-center text-sm text-gray-500 pt-5">
+                        <p className="text-center text-sm text-gray-500 pt-4 md:pt-5">
                             Already have an account?{" "}
                             <a href="/login" className="text-blue-600 font-medium hover:text-blue-500">
                                 Login
