@@ -49,7 +49,7 @@ export default function Projects() {
                                 </Link>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                                
+                                <Link href="/projectDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="font-semibold text-slate-800">E-commerce Platform</h3>
@@ -65,9 +65,9 @@ export default function Projects() {
                                         </div>
                                         <span>Updated 2h ago</span>
                                     </div>
-                                </div>
+                                </div></Link>
 
-                                
+                                <Link href="/projectDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="font-semibold text-slate-800">Mobile App Backend</h3>
@@ -82,9 +82,9 @@ export default function Projects() {
                                         </div>
                                         <span>Updated 5h ago</span>
                                     </div>
-                                </div>
+                                </div></Link>
 
-                                
+                                <Link href="/projectDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="font-semibold text-slate-800">Analytics Dashboard</h3>
@@ -99,8 +99,8 @@ export default function Projects() {
                                         </div>
                                         <span>Updated 1d ago</span>
                                     </div>
-                                </div>
-
+                                </div></Link>
+                                <Link href="/projectDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="font-semibold text-slate-800">AI Chatbot</h3>
@@ -115,8 +115,8 @@ export default function Projects() {
                                         </div>
                                         <span>Updated 3days ago</span>
                                     </div>
-                                </div>
-
+                                </div></Link>
+                                <Link href="/projectDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="font-semibold text-slate-800">CRM System</h3>
@@ -131,8 +131,8 @@ export default function Projects() {
                                         </div>
                                         <span>Updated 1 week ago</span>
                                     </div>
-                                </div>
-
+                                </div></Link>
+                                <Link href="/projectDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="font-semibold text-slate-800">DevOps Pipeline</h3>
@@ -147,7 +147,7 @@ export default function Projects() {
                                         </div>
                                         <span>Updated 2 weeks ago</span>
                                     </div>
-                                </div>
+                                </div></Link>
                             </div>
                         </div>
 
