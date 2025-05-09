@@ -13,6 +13,7 @@ export default function NewProject() {
 
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [isDragging, setIsDragging] = useState<boolean>(false);
+    const imageInputRef = useRef<HTMLInputElement | null>(null);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     const [files, setFiles] = useState<File[]>([]);
@@ -38,8 +39,8 @@ export default function NewProject() {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    const handleClick = () => {
-        fileInputRef.current?.click();
+    const handleImageClick = () => {
+        imageInputRef.current?.click();
     };
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,6 +102,10 @@ export default function NewProject() {
         }
 
         return { valid: true };
+    };
+
+    const handleFileClick = () => {
+        fileInputRef.current?.click();
     };
 
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -199,7 +204,7 @@ export default function NewProject() {
                                             className={`w-36 h-36 flex items-center justify-center rounded-full border-2 border-dashed 
           ${isDragging ? 'border-blue-500' : selectedImage ? 'border-green-500' : 'border-gray-300'} 
           cursor-pointer hover:border-blue-500 transition-colors relative overflow-hidden`}
-                                            onClick={handleClick}
+                                            onClick={handleImageClick}
                                             onDragOver={handleDragOver}
                                             onDragLeave={handleDragLeave}
                                             onDrop={handleImageDrop}
@@ -221,7 +226,7 @@ export default function NewProject() {
 
                                         <input
                                             type="file"
-                                            ref={fileInputRef}
+                                            ref={imageInputRef}
                                             onChange={handleImageChange}
                                             accept="image/*"
                                             className="hidden"
@@ -252,7 +257,7 @@ export default function NewProject() {
                                         <div
                                             className={`w-full border border-dashed rounded-md p-6 flex flex-col items-center justify-center cursor-pointer transition-colors
           ${isDragging ? 'border-blue-500 bg-blue-50' : files.length > 0 ? 'border-green-500' : 'border-gray-300 hover:border-blue-500'}`}
-                                            onClick={handleClick}
+                                            onClick={handleFileClick}
                                             onDragOver={handleDragOver}
                                             onDragLeave={handleDragLeave}
                                             onDrop={handleFileDrop}
