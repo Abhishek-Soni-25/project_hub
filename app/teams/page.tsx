@@ -49,7 +49,7 @@ export default function Teams() {
                                 </Link>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-
+                            <Link href="/teamDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="text-xl font-bold text-slate-800">Development Team</h3>
@@ -79,9 +79,9 @@ export default function Teams() {
                                         </div>
 
                                     </div>
-                                </div>
+                                </div></Link>
 
-
+<Link href="/teamDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="text-xl font-bold text-slate-800">Design Team</h3>
@@ -111,8 +111,8 @@ export default function Teams() {
 
                                     </div>
                                 </div>
-
-
+                                </Link>
+                                <Link href="/teamDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="text-xl font-bold text-slate-800">Marketing Team</h3>
@@ -141,8 +141,8 @@ export default function Teams() {
                                         </div>
 
                                     </div>
-                                </div>
-
+                                </div></Link>
+                                <Link href="/teamDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="text-xl font-bold text-slate-800">QA Team</h3>
@@ -171,8 +171,8 @@ export default function Teams() {
                                         </div>
 
                                     </div>
-                                </div>
-
+                                </div></Link>
+                                <Link href="/teamDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="text-xl font-bold text-slate-800">DevOps Team</h3>
@@ -201,8 +201,8 @@ export default function Teams() {
                                         </div>
 
                                     </div>
-                                </div>
-
+                                </div></Link>
+                                <Link href="/teamDetails">
                                 <div className="bg-white rounded-lg p-4 md:p-5 shadow-sm">
                                     <div className="flex justify-between items-center mb-3">
                                         <h3 className="text-xl font-bold text-slate-800">Data Science Team</h3>
@@ -230,7 +230,7 @@ export default function Teams() {
                                             <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-gray-200 border-2 border-white"></div>
                                         </div>
                                     </div>
-                                </div>
+                                </div></Link>
                             </div>
                         </div>
 
