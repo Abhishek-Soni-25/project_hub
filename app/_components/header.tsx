@@ -3,12 +3,11 @@
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
-// import { auth , signIn} from "../auth";
 
 import GitHubButton from "./githubButton";
 
 export default function Header() {
-    // const session = await auth()
+    
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {

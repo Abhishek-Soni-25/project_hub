@@ -2,10 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import bcrypt from 'bcryptjs'
 import Link from 'next/link'
 
-import { supabase } from "@/app/lib/supabaseClient"
 import GitHubButton from '../_components/githubButton';
 import { useUser } from '../_context/UserContext'
 
@@ -15,6 +13,8 @@ export default function Signup() {
 
     const { setUser } = useUser()
 
+    const [loading, setLoading] = useState(false)
+
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -22,49 +22,43 @@ export default function Signup() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault(); // Prevent default form reload
 
+        // Validation
+        if (!fullName || !email || !password) {
+            return alert("Please enter all details")
+        }
+
+        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailIsValid = pattern.test(email)
+        if (!emailIsValid) {
+            return alert("Please enter a valid email")
+        }
+
+        setLoading(true)
         try {
 
-            // Validation
-            if (!fullName || !email || !password) {
-                return alert("Please enter all details")
-            }
+            const res = await fetch('http://localhost:3000/api/signup', {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({ fullName, email, password }),
+            })
 
-            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const emailIsValid = pattern.test(email)
-            if (!emailIsValid) {
-                return alert("Please enter a valid email")
-            }
-
-            // Checking if user already exists
-            const { data } = await supabase
-            .from("users")
-            .select('email')
-            .eq('email', email)
-
-            if(data && data.length > 0){
-                return alert("Email already registered")
-            }
-
-            const hashedPassword = bcrypt.hashSync(password, 10)
-
-            // Inserting data
-            const { error } = await supabase
-            .from('users')
-            .insert([{ fullName, email, password: hashedPassword }]);
+            const data = await res.json()
 
             // Error handling
-            if (error) {
-                console.error('Signup error:', error.message)
-                alert(error.message)
-            } else {
+            if (res.ok) {
                 setUser({ fullName, email })
-                // Rerouting
-                router.push('/dashboard')
+                router.push("/dashboard");
+            } else {
+                return alert(data.message)
             }
 
         } catch (error) {
             console.error("Signup error:", error);
             alert("Something went wrong. Please try again.");
+        } finally{
+            setLoading(false)
         }
     };
 
@@ -128,8 +122,9 @@ export default function Signup() {
 
                             <button
                                 type='submit'
+                                disabled= {loading}
                                 className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 md:py-3 rounded-md font-medium transition-colors mb-6">
-                                Create Account
+                                {loading ? "Creating Account..." : "Create Account"}
                             </button>
                         </form>
 
