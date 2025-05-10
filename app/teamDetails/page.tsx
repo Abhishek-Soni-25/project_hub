@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { MoreHorizontal, ChevronRight, Users, GitBranch, TrendingUp, Search, Bell } from 'lucide-react';
+import { MoreHorizontal, ChevronRight, Users, GitBranch, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 
 import Hsearch from '../_components/hsearch';
@@ -22,7 +22,7 @@ export default function TeamDetails() {
         { name: 'James Wilson', role: 'Backend Developer', online: false, avatar: '/logo.png' },
     ];
 
-    const renderPriorityBadge = (priority: any) => {
+    const renderPriorityBadge = (priority: string) => {
         const colorClass = priority === 'High' ? 'text-red-500' : 'text-yellow-500';
         return <span className={colorClass}>{priority}</span>;
     };
@@ -37,7 +37,7 @@ export default function TeamDetails() {
                     <div className="mx-auto px-4 sm:px-6  py-6">
                         <div className="flex items-center space-x-4">
                             <div className="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden">
-                                <img src="/api/placeholder/64/64" alt="Team" className="w-full h-full object-cover" />
+                                <Image src="/api/placeholder/64/64" alt="Team" className="w-full h-full object-cover" />
                             </div>
                             <div>
                                 <h1 className="text-2xl font-bold text-gray-900">Development Team</h1>

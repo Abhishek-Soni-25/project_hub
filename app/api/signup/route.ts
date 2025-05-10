@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
     const hashedPassword = bcrypt.hashSync(password, 10)
 
-    const { error } = await supabase
+    const {} = await supabase
         .from('users')
         .insert({ fullName, email, password: hashedPassword })
 

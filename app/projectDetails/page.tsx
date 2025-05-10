@@ -3,6 +3,7 @@
 import Hsearch from "../_components/hsearch";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 // Mock data for demonstration
 const documents = [
@@ -264,7 +265,7 @@ export default function ProjectDetails() {
                 <div className="lg:col-span-2 space-y-6">
                     {/* Project image */}
                     <div className="bg-white rounded-lg overflow-hidden">
-                        <img
+                        <Image
                             src="/laptop.png"
                             alt="Project dashboard"
                             className="w-full h-auto"
@@ -317,7 +318,7 @@ export default function ProjectDetails() {
 
                         {/* Project image */}
                         <div className="bg-white rounded-lg overflow-hidden mb-6">
-                            <img
+                            <Image
                                 src="/laptop.png"
                                 alt="Project dashboard"
                                 className="w-full h-auto"
