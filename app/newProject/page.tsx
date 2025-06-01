@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useEffect, useRef, ChangeEvent, DragEvent } from "react";
-import { Image, FileText, CheckCircle, AlertTriangle, X } from 'lucide-react'
+import { Image as ImageIcon, FileText, CheckCircle, AlertTriangle, X } from 'lucide-react'
+import Image from "next/image";
 
 import Hsearch from "../_components/hsearch";
 import TipsAndGuidelines from "../_components/tipsGuidelines";
@@ -211,15 +212,17 @@ export default function NewProject() {
                                         >
                                             {selectedImage ? (
                                                 <div className="w-full h-full">
-                                                    <img
+                                                    <Image
                                                         src={selectedImage}
                                                         alt="Selected"
+                                                        width={50}
+                                                        height={50}
                                                         className="w-full h-full object-cover rounded-full"
                                                     />
                                                 </div>
                                             ) : (
                                                 <div className="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full">
-                                                    <Image size={24} />
+                                                    <ImageIcon size={24}/>
                                                 </div>
                                             )}
                                         </div>

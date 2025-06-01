@@ -1,9 +1,10 @@
 'use client'
 
 import { useState, useRef } from "react";
-import { useRouter } from "next/navigation";
-import { Image, Link, Github, Twitter, Linkedin } from "lucide-react";
+// import { useRouter } from "next/navigation";
+import { Image as ImageIcon, Link, Github, Twitter, Linkedin } from "lucide-react";
 import { useSession } from "next-auth/react"
+import Image from "next/image";
 
 import Hsearch from "../_components/hsearch";
 import Navbar from "../_components/navbar";
@@ -11,7 +12,7 @@ import { useUser } from "../_context/UserContext";
 
 export default function Settings() {
 
-    const router = useRouter();
+    // const router = useRouter();
 
     const [loading, setLoading] = useState(false)
 
@@ -40,7 +41,6 @@ export default function Settings() {
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-        const formData = new FormData()
         if (file && file.type.startsWith('image/')) {
             setSelectedFile(file);
             const reader = new FileReader();
@@ -133,15 +133,17 @@ export default function Settings() {
                                         >
                                             {selectedImage ? (
                                                 <div className="w-full h-full">
-                                                    <img
+                                                    <Image
                                                         src={selectedImage}
                                                         alt="Selected"
+                                                        width={50}
+                                                        height={50}
                                                         className="w-full h-full object-cover rounded-full"
                                                     />
                                                 </div>
                                             ) : (
                                                 <div className="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full">
-                                                    <Image size={24} />
+                                                    <ImageIcon size={24} />
                                                 </div>
                                             )}
                                         </div>
