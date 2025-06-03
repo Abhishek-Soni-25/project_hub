@@ -3,16 +3,33 @@
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 import GitHubButton from "./githubButton";
+import { useUser } from "../_context/UserContext";
 
 export default function Header() {
-    
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    const { data: session } = useSession();
+    const { user } = useUser()
+
+    const handleGithubAction = async () => {
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/github`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({ session, user }),
+        })
+        console.log(res)
+    }
 
     return (
         <>
@@ -20,19 +37,19 @@ export default function Header() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex items-center">
-                            <Image 
+                            <Image
                                 width={50}
                                 height={50}
-                                className="h-8 w-8 mr-2" 
-                                src="/logo.png" 
-                                alt="Logo" 
+                                className="h-8 w-8 mr-2"
+                                src="/logo.png"
+                                alt="Logo"
                             />
                             <span className="text-white text-xl sm:text-2xl font-bold">Project_Hub</span>
                         </div>
-                        
+
                         {/* Mobile menu button */}
                         <div className="flex md:hidden items-center">
-                            <button 
+                            <button
                                 onClick={toggleMenu}
                                 className="text-white p-2 focus:outline-none"
                             >
@@ -47,7 +64,7 @@ export default function Header() {
                                 )}
                             </button>
                         </div>
-                        
+
                         {/* Desktop menu */}
                         <div className="hidden md:flex items-center">
                             <ul className="flex space-x-4 items-center">
@@ -61,31 +78,31 @@ export default function Header() {
                                         Login
                                     </Link>
                                 </li>
-                                <li>
-                                    <GitHubButton text="Github"/>
+                                <li onClick={handleGithubAction}>
+                                    <GitHubButton text="Github" />
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    
+
                     {/* Mobile menu */}
                     {isMenuOpen && (
                         <div className="md:hidden">
                             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-                                <Link 
+                                <Link
                                     href="/signup"
                                     className="block text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium"
                                 >
                                     Signup
                                 </Link>
-                                <Link 
+                                <Link
                                     href="/login"
                                     className="block text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium"
                                 >
                                     Login
                                 </Link>
                                 <div className="px-3 py-2">
-                                    <GitHubButton text="Github"/>
+                                    <GitHubButton text="Github" />
                                 </div>
                             </div>
                         </div>
