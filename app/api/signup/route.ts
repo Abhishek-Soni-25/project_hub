@@ -21,5 +21,5 @@ export async function POST(request: Request) {
         .from('users')
         .insert({ fullName, email, password: hashedPassword })
 
-    return NextResponse.json({ message: "User registered successfully" }, { status: 201 })
+    return NextResponse.json({ status: 201 })
 }

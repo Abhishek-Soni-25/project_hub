@@ -2,10 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import bcrypt from 'bcryptjs';
 import Link from 'next/link';
 
-import { supabase } from '@/app/lib/supabaseClient';
 import GitHubButton from '../_components/githubButton';
 import { useUser } from '../_context/UserContext';
 
@@ -15,48 +13,45 @@ export default function Login() {
 
     const { setUser } = useUser()
 
+    const [loading, setLoading] = useState(false)
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault(); // Prevent default form reload
 
+        // Validating
+        if (!email || !password) {
+            return alert("Please enter all details")
+        }
+
+        setLoading(true)
         try {
             
-            // Validating
-            if (!email || !password) {
-                return alert("Please enter all details")
-            }
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/login`, {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+            })
 
-            const { data, error } = await supabase
-            .from("users")
-            .select('fullName, email, password')
-            .eq('email', email)
-
-            if(!data || data.length === 0){
-                return alert("User not found")
-            }
-
-            const fullname = data[0].fullName
-            const passwordIsCorrect = await bcrypt.compare(password, data[0].password)
-
-            if(!passwordIsCorrect){
-                return alert("Password is wrong")
-            }
+            const data = await res.json()
+            const fullName = data.value
 
             // Error handling
-            if (error) {
-                console.error('Signup error:', error)
-                alert(error)
+            if (res.ok) {
+                setUser({ fullName, email })
+                router.push("/dashboard");
             } else {
-                setUser({ fullName: fullname, email })
-                // Rerouting
-                router.push('/dashboard')
+                return alert(data.message)
             }
 
         } catch (error) {
-            console.error("Login error:", error);
             alert("Something went wrong. Please try again.");
+        } finally{
+            setLoading(false)
         }
     };
 
@@ -112,8 +107,9 @@ export default function Login() {
 
                             <button
                                 type='submit'
+                                disabled={loading}
                                 className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 md:py-3 rounded-md font-medium text-sm transition-colors mt-3 md:mt-4 mb-4 md:mb-6">
-                                Log In
+                                {loading ? "Logging In..." : "Log In"}
                             </button>
                         </form>
 
