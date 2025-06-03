@@ -21,14 +21,13 @@ export default function Header() {
 
     const handleGithubAction = async () => {
 
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/github`, {
+        await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/github`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
             },
             body: JSON.stringify({ session, user }),
         })
-        console.log(res)
     }
 
     return (
