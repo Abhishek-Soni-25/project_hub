@@ -49,6 +49,7 @@ export default function Login() {
             }
 
         } catch (error) {
+            console.log(error)
             alert("Something went wrong. Please try again.");
         } finally{
             setLoading(false)
